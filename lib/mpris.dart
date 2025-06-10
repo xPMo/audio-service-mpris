@@ -246,8 +246,11 @@ class OrgMprisMediaPlayer2 extends DBusObject {
 
   /// Implementation of org.mpris.MediaPlayer2.Player.Seek()
   Future<DBusMethodResponse> doSeek(int offset) async {
-    log('org.mpris.MediaPlayer2.Player.Seek() not implemented',
-        name: 'audio_service_mpris');
+    var newposition = position.inMicroseconds + offset;
+    if (newposition < 0){
+      newposition = 0;
+    }
+    _positionStreamController.add(Duration(microseconds: newposition));
     return DBusMethodSuccessResponse([]);
   }
 
