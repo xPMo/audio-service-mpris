@@ -26,6 +26,7 @@ class AudioServiceMpris extends AudioServicePlatform {
       if (_handlerCallbacks == null) return;
 
       _handlerCallbacks!.seek(SeekRequest(position: position));
+      _mpris.emitSeeked(position);
     });
   }
 
