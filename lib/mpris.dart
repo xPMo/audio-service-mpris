@@ -19,6 +19,8 @@ class OrgMprisMediaPlayer2 extends DBusObject {
   final _volumeStreamController = StreamController<double>();
   Stream<double> get volumeStream => _volumeStreamController.stream;
 
+  var position = const Duration(seconds: 0);
+
   /// Creates a new object to expose on [path].
   OrgMprisMediaPlayer2(
       {DBusObjectPath path = const DBusObjectPath.unchecked('/'),
@@ -128,7 +130,6 @@ class OrgMprisMediaPlayer2 extends DBusObject {
     return DBusMethodSuccessResponse([]);
   }
 
-
   Metadata _metadata = Metadata(
     trackId: "/org/mpris/MediaPlayer2/TrackList/NoTrack",
     title: "No title",
@@ -161,18 +162,10 @@ class OrgMprisMediaPlayer2 extends DBusObject {
     return DBusMethodSuccessResponse([]);
   }
 
-  Duration _position = const Duration(seconds: 0);
-  Duration get position => _position;
-  set position(Duration position) {
-    if (position == _position) return;
-    emitSeeked(position);
-    _position = position;
-  }
-
   /// Gets value of property org.mpris.MediaPlayer2.Player.Position
   DBusInt64 getPosition() {
-    log('GetPosition(): $_position', name: 'audio_service_mpris');
-    return DBusInt64(_position.inMicroseconds);
+    log('GetPosition(): $position', name: 'audio_service_mpris');
+    return DBusInt64(position.inMicroseconds);
   }
 
   /// Gets value of property org.mpris.MediaPlayer2.Player.MinimumRate
@@ -253,7 +246,7 @@ class OrgMprisMediaPlayer2 extends DBusObject {
 
   /// Implementation of org.mpris.MediaPlayer2.Player.Seek()
   Future<DBusMethodResponse> doSeek(int offset) async {
-    var newposition = _position.inMicroseconds + offset;
+    var newposition = position.inMicroseconds + offset;
     if (newposition < 0){
       newposition = 0;
     }
