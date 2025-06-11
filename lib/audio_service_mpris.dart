@@ -107,6 +107,8 @@ class AudioServiceMpris extends AudioServicePlatform {
     if (request.mediaItem.genre != null) genre = [request.mediaItem.genre!];
 
     _mpris.metadata = Metadata(
+        // Can just be NoTrack for now
+        trackId: "/org/mpris/MediaPlayer2/TrackList/NoTrack",
         title: request.mediaItem.title,
         length: request.mediaItem.duration,
         artist: artist,
