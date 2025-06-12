@@ -49,7 +49,7 @@ flutter pub add audio_service_mpris
 | [PlayPause](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Method:PlayPause)     | ✅         |
 | [Stop](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Method:Stop)               | ✅         |
 | [Play](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Method:Play)               | ✅         |
-| [Seek](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Method:Seek)               | ❌         |
+| [Seek](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Method:Seek)               | ✅         |
 | [SetPosition](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Method:SetPosition) | ✅         |
 | [OpenUri](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Method:OpenUri)         | ❌         |
 
@@ -57,7 +57,7 @@ flutter pub add audio_service_mpris
 
 | Name                                                                                                | Supported |
 |-----------------------------------------------------------------------------------------------------|-----------|
-| [Seeked](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Signal:Seeked) | ❌         |
+| [Seeked](https://specifications.freedesktop.org/mpris-spec/2.2/Player_Interface.html#Signal:Seeked) | ✅         |
 
 **Properties**
 
